@@ -15,7 +15,7 @@ class HomeScreen extends React.Component {
         />
         <Button
           title="Go to Expenses"
-          onPress={() => this.props.navigation.navigate('Sales')}
+          onPress={() => this.props.navigation.navigate('Expenses')}
         />
       </View>
     );
