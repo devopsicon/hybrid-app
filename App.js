@@ -1,35 +1,66 @@
-import React,  { Component }  from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import React, { Component } from 'react';
+import { Alert, AppRegistry, Button, StyleSheet, View, Text } from 'react-native';
+import {
+  StackNavigator,
+} from 'react-navigation';
 
-export default class App extends React.Component {
+
+class HomeScreen extends React.Component {
   render() {
-    let pic = {
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-    };
     return (
-      <View style={{alignItems: 'center'}}>
-        <Greeting name='Rexxar' />
-        <Greeting name='Jaina' />
-        <Greeting name='Valeera' />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button
+          title="Go to Sales"
+          onPress={() => this.props.navigation.navigate('Sales')}
+        />
+        <Button
+          title="Go to Expenses"
+          onPress={() => this.props.navigation.navigate('Sales')}
+        />
       </View>
     );
   }
 }
 
-class Greeting extends Component {
+class SalesScreen extends React.Component {
   render() {
     return (
-      <Text>Hello {this.props.name}!</Text>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Sales Screen</Text>
+      </View>
     );
   }
 }
 
+class ExpensesScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Expenses Screen</Text>
+      </View>
+    );
+  }
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const RootStack = StackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Sales: {
+      screen: SalesScreen,
+    },
+    Expenses: {
+      screen: ExpensesScreen,
+    },
   },
-});
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+export default class App extends React.Component {
+  render() {
+    return <RootStack />;
+  }
+}
