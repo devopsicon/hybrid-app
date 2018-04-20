@@ -33,7 +33,7 @@ class SalesScreen extends React.Component  {
   }
 
   componentDidMount(){
-    return fetch('https://raw.githubusercontent.com/yuya373/spark-tutorial/master/src/main/resources/sales.json')
+    return fetch('https://devopsicon-sales-staging.herokuapp.com/sales/')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -70,7 +70,7 @@ class SalesScreen extends React.Component  {
       <View style={{flex: 1, paddingTop:20}}>
         <FlatList
           data={this.state.dataSource}
-          renderItem={({item}) => <Text>{item.customerId}, {item.amountPaid},{item.transactionId}</Text>}
+          renderItem={({item}) => <Text>{item.itemId}, {item.locationId},{item.userId},{item.amount},{item.comments}</Text>}
           keyExtractor={(item, index) => index}
         />
       </View>
